@@ -8,7 +8,8 @@ function ModuleRoutes(app) {
     app.post("/api/courses/:cid/modules", async (req, res) => {
         const { cid } = req.params;
         const newModule = await dao.createModule(cid, req.body);
-        res.json(newModule);
+
+        res.json({...req.body, course: cid})
     });
     app.delete("/api/modules/:mid", async (req, res) => {
         const { mid } = req.params;

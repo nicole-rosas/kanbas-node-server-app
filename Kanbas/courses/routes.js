@@ -5,13 +5,11 @@ export default function CourseRoutes(app) {
         res.json(courses);
     });
     app.post("/api/courses", async (req, res) => {
-        console.log("HELLLLLOOO4")
+
         await dao.createCourse(req.body);
-        console.log("HELLLLLOOO2")
-        console.log(req.body["id"])
+
         const course = await dao.findCourseById(req.body["id"])
-        console.log("HELLLLLOOO")
-        console.log(course)
+
         res.json(course);
     });
     app.delete("/api/courses/:id", async (req, res) => {
